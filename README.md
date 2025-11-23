@@ -1,50 +1,28 @@
-# Welcome to your Expo app 👋
+# FoodDeliveryApp - Expo React Native 테스트
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+이 레포지토리는 **리액트 네이티브 앱 Expo** 환경에서 **안드로이드 화면 테스트**를 위한 샘플 프로젝트입니다. 배달 앱 제작 전 환경 구축 및 기능 테스트용으로 사용됨.
 
-## Get started
+## 📌 환경
+- macOS M4
+- Node.js
+- Expo CLI
+- Android Studio (Android Emulator)
 
-1. Install dependencies
+## ⚡ 설치 및 실행
+레포지토리를 클론하고 폴더 이동 후 패키지를 설치합니다.
 
-   ```bash
-   npm install
-   ```
+git clone https://github.com/사용자명/FoodDeliveryApp.git  
+cd FoodDeliveryApp  
+npm install  
 
-2. Start the app
+Expo 실행
 
-   ```bash
-   npx expo start
-   ```
+npx expo start
 
-In the output, you'll find options to open the app in a
+Android 에뮬레이터에서 실행  
+- Expo CLI에서 `a` 입력  
+- 또는 Expo Go 앱으로 QR 코드 스캔
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📱 앱 화면
+<img width="1080" height="2400" alt="image" src="https://github.com/user-attachments/assets/46b57a25-81ab-4fc4-8af3-3b87596581c7" />
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
