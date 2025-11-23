@@ -1,98 +1,69 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <ScrollView style={styles.container}>
+      {/* 상단 배경 + 로고 */}
+      <View style={styles.header}>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+        source={require('@/assets/images/AppLogo.png')}
+          style={styles.logo}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+        <Text style={styles.headerTitle}>오늘의 배달</Text>
+      </View>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      {/* 가로 스크롤 메뉴 */}
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.menuScroll}>
+        {['피자', '치킨', '버거', '한식', '중식', '일식'].map((item, idx) => (
+          <View key={idx} style={styles.menuItem}>
+            <Text style={styles.menuText}>{item}</Text>
+          </View>
+        ))}
+      </ScrollView>
+
+      {/* 추천 음식 */}
+     <View style={styles.section}>
+  <Text style={styles.sectionTitle}>추천 음식</Text>
+  <View style={styles.foodGrid}>
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+      <Pressable key={item} style={styles.foodCard}>
+        <Image
+          source={require('@/assets/images/food01.jpeg')}
+          style={styles.foodImage}
+        />
+        <Text style={styles.foodName}>배달 음식 {item}</Text>
+      </Pressable>
+    ))}
+  </View>
+</View>
+
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: { flex: 1, backgroundColor: '#fff' },
+  header: { backgroundColor: '#ffc79cff', padding: 30, alignItems: 'center' },
+  logo: { width: 80, height: 80, marginBottom: 8 },
+  headerTitle: { fontSize: 24, fontWeight: 'bold', color: '#1D3D47' },
+  menuScroll: { paddingLeft: 16, height: 80, marginVertical: 16 },
+  menuItem: { 
+    width: 80, height: 80, justifyContent: 'center', alignItems: 'center', 
+    backgroundColor: '#f2f2f2', borderRadius: 12, marginRight: 12 
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+  menuText: { fontSize: 14, fontWeight: '600', textAlign: 'center' },
+  section: { paddingBottom: 16 }, 
+  sectionTitle: { fontSize: 20, fontWeight: 'bold', marginLeft: 16, marginBottom: 12 },
+foodGrid: {
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  paddingHorizontal: 16,
+},
+foodCard: {
+  width: '30%',    
+  marginBottom: 16,
+},
+foodImage: { width: '100%', height: 100, borderRadius: 12, marginBottom: 8 },
+foodName: { fontSize: 16, fontWeight: '500', textAlign: 'center' },
+
 });
