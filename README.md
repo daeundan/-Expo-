@@ -11,9 +11,17 @@
 ## ⚡ 설치 및 실행
 레포지토리를 클론하고 폴더 이동 후 패키지를 설치합니다.
 
-git clone https://github.com/사용자명/FoodDeliveryApp.git  
-cd FoodDeliveryApp  
-npm install  
+```bash
+git clone https://github.com/daeundan/FoodDeliveryApp.git
+```
+
+```bash
+cd FoodDeliveryApp
+```
+
+```bash 
+npm install
+```
 
 Expo 실행
 
